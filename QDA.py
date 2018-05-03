@@ -12,6 +12,10 @@ if __name__ == '__main__':
     plt.show()
     sns.distplot(dataframe['B'])
     plt.show()
+    sns.pairplot(dataframe)
+    plt.show()
+    sns.heatmap(dataframe.iloc[:, 1:4].corr())
+    plt.show()
     cov1 = dataframe.iloc[:, 1:3].cov()
     sns.heatmap(cov1)
     plt.show()
@@ -48,6 +52,7 @@ if __name__ == '__main__':
     print(cov2)
     x=dataframe_test.iloc[1,:]
     x_transpose=np.transpose(x)
-    Quadritic_term= x_transpose*(cov2_inverse-cov1_inverse)*x
+    Quadritic_term= np.multiply(x_transpose,np.multiply(np.subtract(cov2_inverse,cov1_inverse),x))
+    print(Quadritic_term)
    # print(qda(class_1_X,class_1_mean,cov1,1))
 
